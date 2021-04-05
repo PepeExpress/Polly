@@ -1,0 +1,11 @@
+{
+    "loginCheck": "Controllo se sei loggato",
+    "userScreenTitle": "Profilo",
+    "leaderboardScreenTitle": "Classifica",
+    "herbaryScreenTitle": "Erbario",
+    "homeScreenTitle": "Home",
+    "question": "Domanda",
+    "yes": "Si",
+    "no": "No",
+    "qHasMoreThan6Petals": "Ha più di 6 petali?"
+}

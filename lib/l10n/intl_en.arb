@@ -1,0 +1,11 @@
+{
+    "loginCheck": "Checking if you are loggin in",
+    "userScreenTitle": "User profile",
+    "leaderboardScreenTitle": "Leaderboard",
+    "herbaryScreenTitle": "Herbary",
+    "homeScreenTitle": "Home",
+    "question": "Question",
+    "yes": "Yes",
+    "no": "No",
+    "qHasMoreThan6Petals": "Has more than 6 petals?"
+}

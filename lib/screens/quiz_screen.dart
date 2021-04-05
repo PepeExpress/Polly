@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:plant_classification/generated/l10n.dart';
 import 'package:plant_classification/widgets/gradient_background.dart';
 import 'package:plant_classification/widgets/navigation_bar.dart';
 
@@ -9,6 +10,7 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final delegate = S.of(context);
     final size = MediaQuery.of(context).size;
     final QuizScreenArguments args =
         ModalRoute.of(context).settings.arguments as QuizScreenArguments;
@@ -23,7 +25,7 @@ class QuizScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "Domanda 1",
+                      delegate.question + " 1",
                       style: Theme.of(context).textTheme.headline1,
                     ),
                     Padding(
@@ -54,7 +56,7 @@ class QuizScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Ha più di 6 petali?',
+                      delegate.qHasMoreThan6Petals,
                       style: Theme.of(context).textTheme.headline3,
                     ),
                     Container(
