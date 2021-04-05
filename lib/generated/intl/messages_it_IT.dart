@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a it_IT locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -17,18 +17,18 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'en';
+  String get localeName => 'it_IT';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "herbaryScreenTitle" : MessageLookupByLibrary.simpleMessage("Herbary"),
+    "herbaryScreenTitle" : MessageLookupByLibrary.simpleMessage("Erbario"),
     "homeScreenTitle" : MessageLookupByLibrary.simpleMessage("Home"),
-    "leaderboardScreenTitle" : MessageLookupByLibrary.simpleMessage("Leaderboard"),
-    "loginCheck" : MessageLookupByLibrary.simpleMessage("Checking if you are loggin in"),
+    "leaderboardScreenTitle" : MessageLookupByLibrary.simpleMessage("Classifica"),
+    "loginCheck" : MessageLookupByLibrary.simpleMessage("Controllo se sei loggato"),
     "no" : MessageLookupByLibrary.simpleMessage("No"),
-    "qHasMoreThan6Petals" : MessageLookupByLibrary.simpleMessage("Has more than 6 petals?"),
-    "question" : MessageLookupByLibrary.simpleMessage("Question"),
-    "userScreenTitle" : MessageLookupByLibrary.simpleMessage("User profile"),
-    "yes" : MessageLookupByLibrary.simpleMessage("Yes")
+    "qHasMoreThan6Petals" : MessageLookupByLibrary.simpleMessage("Ha più di 6 petali?"),
+    "question" : MessageLookupByLibrary.simpleMessage("Domanda"),
+    "userScreenTitle" : MessageLookupByLibrary.simpleMessage("Profilo"),
+    "yes" : MessageLookupByLibrary.simpleMessage("Si")
   };
 }

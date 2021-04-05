@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plant_classification/generated/l10n.dart';
 import 'package:plant_classification/utils/globals.dart';
 import 'package:plant_classification/widgets/gradient_background.dart';
 
@@ -13,7 +14,6 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   void initState() {
     super.initState();
-    print("Hello");
     //Controllare se l'utente è loggato
 
     Future.delayed(Duration(seconds: 1)).then((value) => isUserAuthenticated
@@ -23,9 +23,10 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final delegate = S.of(context);
     return Container(
       child: MultipleGradientBG(
-        child: Center(child: Text("Controllo se sei loggato")),
+        child: Center(child: Text(delegate.loginCheck)),
       ),
     );
   }

@@ -19,6 +19,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>it_IT</string>
+	</array>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
