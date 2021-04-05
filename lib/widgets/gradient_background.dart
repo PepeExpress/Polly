@@ -7,8 +7,9 @@ class MultipleGradientBG extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Container(
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
         decoration: BoxDecoration(
           gradient: RadialGradient(
             colors: [greenbg1, greenbg2],

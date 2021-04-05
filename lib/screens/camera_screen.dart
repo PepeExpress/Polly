@@ -52,7 +52,9 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
                 );
               } else {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.white,
+                  ),
                 );
               }
             },
@@ -61,9 +63,16 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: IconButton(
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () => Navigator.pop(context),
-              ),
+                  icon: Icon(Icons.arrow_back_ios),
+                  onPressed: () => {
+                        if (Navigator.canPop(context))
+                          {Navigator.pop(context)}
+                        else
+                          {
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/home', (route) => false)
+                          }
+                      }),
             ),
           ),
           Positioned(
