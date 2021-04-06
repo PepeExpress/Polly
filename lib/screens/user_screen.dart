@@ -14,6 +14,62 @@ class UserScreen extends StatelessWidget {
             delegate.userScreenTitle,
             style: Theme.of(context).textTheme.headline1,
           ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          Text(
+            delegate.userScreenTitle,
+            style: Theme.of(context).textTheme.headline1,
+          ),
         ],
       ),
     );

@@ -23,31 +23,32 @@ class _HerbaryScreenState extends State<HerbaryScreen>
   @override
   Widget build(BuildContext context) {
     final delegate = S.of(context);
-    return SafeArea(
-      child: Column(
-        children: [
-          Text(
+    return Column(
+      children: [
+        SafeArea(
+          child: Text(
             delegate.herbaryScreenTitle,
             style: Theme.of(context).textTheme.headline1,
           ),
-          Expanded(
-            child: Stack(
-              children: [
-                GridView.count(
-                  crossAxisCount: 3,
-                  children: List.generate(40, (index) {
-                    return Container(
-                      child: Card(
-                        color: Colors.amber,
-                      ),
-                    );
-                  }),
-                ),
-              ],
-            ),
+        ),
+        Expanded(
+          child: Stack(
+            children: [
+              GridView.count(
+                padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                crossAxisCount: 3,
+                children: List.generate(40, (index) {
+                  return Container(
+                    child: Card(
+                      color: Colors.amber,
+                    ),
+                  );
+                }),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

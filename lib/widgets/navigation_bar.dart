@@ -34,12 +34,13 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     return Container(
       width: size.width,
       height: size.height / 13,
+      color: Colors.transparent,
       child: Stack(
         children: [
           ClipShadowPath(
             shadow: Shadow(
               blurRadius: 4,
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.4),
               offset: Offset(0, -3.0),
             ),
             clipper: BNBCustomClipper(),

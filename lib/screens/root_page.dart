@@ -40,6 +40,7 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBody: true,
       body: Stack(
         children: [
           MultipleGradientBG(),
@@ -65,7 +66,6 @@ class _RootPageState extends State<RootPage> {
           _appPageController.jumpToPage(index);
         },
       ),
-      extendBody: true,
     );
   }
 }
