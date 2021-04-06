@@ -16,21 +16,21 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  int _currentIndex = 2;
+  int _currentIndex = 3;
   final _pages = [
     UserScreen(),
     LeaderboardScreen(),
     HerbaryScreen(),
     HomeScreen()
   ];
-  var _appPageController = PageController();
+  var _appPageController = PageController(initialPage: 3);
 
   setBottomBarIndex(index) {
     setState(() {
       _currentIndex = index;
     });
     _appPageController.animateToPage(
-      index,
+      _currentIndex,
       duration: Duration(milliseconds: 500),
       curve: Curves.ease,
     );
@@ -57,7 +57,7 @@ class _RootPageState extends State<RootPage> {
       ),
       backgroundColor: Colors.transparent,
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 2,
+        currentIndex: 3,
         onChange: (index) {
           setState(() {
             _currentIndex = index;

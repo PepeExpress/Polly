@@ -24,10 +24,15 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     final delegate = S.of(context);
-    return Container(
-      child: MultipleGradientBG(
-        child: Center(child: Text(delegate.loginCheck)),
+    return Scaffold(
+      body: MultipleGradientBG(
+        child: Center(
+          child: Text(
+            delegate.loginCheck,
+          ),
+        ),
       ),
+      backgroundColor: Colors.transparent,
     );
   }
 }
