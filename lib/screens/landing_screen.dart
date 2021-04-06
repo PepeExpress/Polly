@@ -17,7 +17,7 @@ class _LandingScreenState extends State<LandingScreen> {
     //Controllare se l'utente è loggato
 
     Future.delayed(Duration(seconds: 1)).then((value) => isUserAuthenticated
-        ? Navigator.pushReplacementNamed(context, '/home')
+        ? Navigator.pushReplacementNamed(context, '/root')
         : Navigator.pushReplacementNamed(context, '/login'));
   }
 

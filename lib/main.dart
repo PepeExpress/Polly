@@ -8,6 +8,7 @@ import 'package:plant_classification/screens/landing_screen.dart';
 import 'package:plant_classification/screens/leaderboard_screen.dart';
 import 'package:plant_classification/screens/login_screen.dart';
 import 'package:plant_classification/screens/quiz_screen.dart';
+import 'package:plant_classification/screens/root_page.dart';
 import 'package:plant_classification/screens/user_screen.dart';
 import 'package:plant_classification/utils/globals.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LandingScreen(),
+        '/root': (context) => RootPage(),
         '/login': (context) => LoginScreen(),
         '/user': (context) => UserScreen(),
         '/leaderboard': (context) => LeaderboardScreen(),
