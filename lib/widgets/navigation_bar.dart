@@ -13,9 +13,13 @@ class CustomBottomNavigationBar extends StatefulWidget {
 }
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+  int cIndex = 3;
   void _changeIndex(int index) {
     if (widget.onChange != null) {
       widget.onChange(index);
+      setState(() {
+        cIndex = index;
+      });
     }
   }
 
@@ -47,40 +51,128 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      IconButton(
-                        icon: Icon(Icons.person_outlined),
-                        onPressed: () => {_changeIndex(0)},
-                        splashColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
+                      ClipOval(
+                        child: GestureDetector(
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: 54,
+                                height: 54,
+                                child: Icon(
+                                  Icons.person_outline,
+                                  size: 28,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 5,
+                                left: 24,
+                                child: ClipOval(
+                                  child: Container(
+                                    width: 6,
+                                    height: 6,
+                                    color: cIndex == 0
+                                        ? Colors.black
+                                        : Colors.transparent,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          onTap: () => {_changeIndex(0)},
+                        ),
                       ),
-                      IconButton(
-                        icon: Icon(Icons.leaderboard_outlined),
-                        onPressed: () => {_changeIndex(1)},
-                        splashColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
+                      ClipOval(
+                        child: GestureDetector(
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: 54,
+                                height: 54,
+                                child: Icon(
+                                  Icons.leaderboard_outlined,
+                                  size: 28,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 5,
+                                left: 24,
+                                child: ClipOval(
+                                  child: Container(
+                                    width: 6,
+                                    height: 6,
+                                    color: cIndex == 1
+                                        ? Colors.black
+                                        : Colors.transparent,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          onTap: () => {_changeIndex(1)},
+                        ),
                       ),
                       SizedBox(
-                        width: 15,
+                        width: 40,
                       ),
-                      Stack(
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.menu_book_sharp),
-                            onPressed: () => {_changeIndex(2)},
-                            splashColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
+                      ClipOval(
+                        child: GestureDetector(
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: 54,
+                                height: 54,
+                                child: Icon(
+                                  Icons.menu_book_outlined,
+                                  size: 28,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 5,
+                                left: 24,
+                                child: ClipOval(
+                                  child: Container(
+                                    width: 6,
+                                    height: 6,
+                                    color: cIndex == 2
+                                        ? Colors.black
+                                        : Colors.transparent,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                          onTap: () => {_changeIndex(2)},
+                        ),
                       ),
-                      IconButton(
-                        icon: Icon(Icons.home_outlined),
-                        onPressed: () => {_changeIndex(3)},
-                        splashColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
+                      ClipOval(
+                        child: GestureDetector(
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: 54,
+                                height: 54,
+                                child: Icon(
+                                  Icons.home_outlined,
+                                  size: 28,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 5,
+                                left: 24,
+                                child: ClipOval(
+                                  child: Container(
+                                    width: 6,
+                                    height: 6,
+                                    color: cIndex == 3
+                                        ? Colors.black
+                                        : Colors.transparent,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          onTap: () => {_changeIndex(3)},
+                        ),
                       ),
                     ],
                   ),
