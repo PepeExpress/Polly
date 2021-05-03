@@ -115,11 +115,81 @@ class S {
     );
   }
 
-  /// `Has more than 6 petals?`
-  String get qHasMoreThan6Petals {
+  /// `Which characteristics are present in the plant?`
+  String get whichCharacteristicsPlant {
     return Intl.message(
-      'Has more than 6 petals?',
-      name: 'qHasMoreThan6Petals',
+      'Which characteristics are present in the plant?',
+      name: 'whichCharacteristicsPlant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Which characteristics has the flower?`
+  String get whichCharacteristicsFlower {
+    return Intl.message(
+      'Which characteristics has the flower?',
+      name: 'whichCharacteristicsFlower',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The flower has this trait?`
+  String get flowerHasTheseCharacteristics {
+    return Intl.message(
+      'The flower has this trait?',
+      name: 'flowerHasTheseCharacteristics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The plant belongs to one of the following families`
+  String get multipleResult {
+    return Intl.message(
+      'The plant belongs to one of the following families',
+      name: 'multipleResult',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The plant belongs to the family of `
+  String get resultIncipit {
+    return Intl.message(
+      'The plant belongs to the family of ',
+      name: 'resultIncipit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leaf with parallel veins`
+  String get question1text1 {
+    return Intl.message(
+      'Leaf with parallel veins',
+      name: 'question1text1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The flower has a number of petals multiple of 3`
+  String get question1text2 {
+    return Intl.message(
+      'The flower has a number of petals multiple of 3',
+      name: 'question1text2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complex leaf with branched veins`
+  String get question1text3 {
+    return Intl.message(
+      'Complex leaf with branched veins',
+      name: 'question1text3',
       desc: '',
       args: [],
     );

@@ -7,6 +7,13 @@
     "question": "Question",
     "yes": "Yes",
     "no": "No",
-    "qHasMoreThan6Petals": "Has more than 6 petals?"
+    "whichCharacteristicsPlant": "Which characteristics are present in the plant?",
+    "whichCharacteristicsFlower": "Which characteristics has the flower?",
+    "flowerHasTheseCharacteristics": "The flower has this trait?",
+    "multipleResult": "The plant belongs to one of the following families",
+    "resultIncipit": "The plant belongs to the family of ",
+    "question1text1": "Leaf with parallel veins",
+    "question1text2": "The flower has a number of petals multiple of 3",
+    "question1text3": "Complex leaf with branched veins"
 }
 

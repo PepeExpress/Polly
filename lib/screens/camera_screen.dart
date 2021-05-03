@@ -96,11 +96,9 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
                         try {
                           await _initializeControllerFuture;
                           final image = await _controller.takePicture();
-                          Navigator.pushNamed(
-                            context,
-                            '/quiz',
-                            arguments: QuizScreenArguments(image?.path),
-                          );
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, '/quiz', (route) => false,
+                              arguments: QuizScreenArguments(image?.path));
                         } catch (e) {
                           print(e);
                         }

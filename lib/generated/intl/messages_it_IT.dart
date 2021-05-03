@@ -26,7 +26,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "leaderboardScreenTitle" : MessageLookupByLibrary.simpleMessage("Classifica"),
     "loginCheck" : MessageLookupByLibrary.simpleMessage("Controllo se sei loggato"),
     "no" : MessageLookupByLibrary.simpleMessage("No"),
-    "qHasMoreThan6Petals" : MessageLookupByLibrary.simpleMessage("Ha più di 6 petali?"),
     "question" : MessageLookupByLibrary.simpleMessage("Domanda"),
     "userScreenTitle" : MessageLookupByLibrary.simpleMessage("Profilo"),
     "yes" : MessageLookupByLibrary.simpleMessage("Si")

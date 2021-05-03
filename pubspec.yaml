@@ -21,7 +21,9 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  get:
   flutter_login: ^1.1.0
+  carousel_slider: ^3.0.0
   flutter:
     sdk: flutter
   flutter_localizations:
@@ -42,7 +44,8 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
 flutter:
-
+  assets:
+    - assets/graphics/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
