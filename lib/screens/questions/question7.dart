@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:plant_classification/controllers/quiz_screen_controller.dart';
 import 'package:plant_classification/screens/questions/yes_no_question.dart';
 
+import '../result_screen.dart';
+
 class Question7 extends StatelessWidget {
   Question7({Key key}) : super(key: key);
   final QuizScreenController c = Get.find();
@@ -12,7 +14,13 @@ class Question7 extends StatelessWidget {
     return Container(
       child: YesNoQuestion(
         question: 'La foglia è semplice?',
-        onYesPressed: () => {/**RISULTATO TIPO EDERA GLOBULARIA */},
+        onYesPressed: () => {
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/result', (route) => false,
+              arguments: ResultScreenArguments(
+                  {"EDERA GLOBULARIA": "assets/graphics/edera.PNG"},
+                  "La pianta appartiene alla famiglia dell'edera"))
+        },
         onNoPressed: () => {c.appPageController.value.jumpToPage(7)},
       ),
     );

@@ -54,8 +54,9 @@ class QuizScreenController extends GetxController {
         Question28(),
         Question29(),
         Question30(),
+        Question31(),
       ];
 
   incrementQuestion() => currentQuestion++;
-  resetQuiz() => currentQuestion = 0.obs;
+  resetQuiz() => currentQuestion = 1.obs;
 }

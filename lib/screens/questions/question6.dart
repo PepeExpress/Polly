@@ -29,7 +29,7 @@ class Question6 extends StatelessWidget {
                 width: size.width * 0.95 / 2,
                 height: size.width * 0.95,
                 child: Image(
-                  image: AssetImage('assets/graphics/edera_globularia.PNG'),
+                  image: AssetImage('assets/graphics/edera.PNG'),
                 ),
               ),
               Container(

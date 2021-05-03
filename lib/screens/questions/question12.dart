@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plant_classification/controllers/quiz_screen_controller.dart';
 import 'package:plant_classification/screens/questions/multiple_choice_question.dart';
-import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import 'package:plant_classification/widgets/question_button.dart';
 
 class Question12 extends StatelessWidget {
