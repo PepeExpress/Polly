@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plant_classification/screens/questions/questions.dart';
+import 'package:tflite/tflite.dart';
 
 class QuizScreenController extends GetxController {
   QuizScreenController(String imagePath) {
@@ -22,6 +25,14 @@ class QuizScreenController extends GetxController {
     enlargeCenterPage: false,
     scrollDirection: Axis.horizontal,
   );
+
+  Future loadModel() async {
+    String res = await Tflite.loadModel(
+      model: "assets/tensorflow/model.tflite",
+      labels: "assets/tensorflow/labels.txt",
+    );
+    print("Result after loading the model: " + res);
+  }
 
   pages() => [
         Question1(),
@@ -56,6 +67,21 @@ class QuizScreenController extends GetxController {
         Question30(),
         Question31(),
       ];
+
+  initModel() async {
+    await loadModel();
+    tflite();
+  }
+
+  Future tflite() async {
+    var recognitions = await Tflite.detectObjectOnImage(
+      path: imagePath.value,
+      threshold: 0.3,
+      imageMean: 0.0,
+      imageStd: 255.0,
+    );
+    print(recognitions);
+  }
 
   incrementQuestion() => currentQuestion++;
   resetQuiz() => currentQuestion = 1.obs;

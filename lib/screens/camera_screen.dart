@@ -4,6 +4,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_classification/screens/quiz_screen.dart';
 
+import 'crop_screen.dart';
+
 class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
   const TakePictureScreen({Key key, @required this.camera}) : super(key: key);
@@ -97,8 +99,11 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
                           await _initializeControllerFuture;
                           final image = await _controller.takePicture();
                           Navigator.pushNamedAndRemoveUntil(
-                              context, '/quiz', (route) => false,
-                              arguments: QuizScreenArguments(image?.path));
+                            context,
+                            '/quiz',
+                            (route) => false,
+                            arguments: QuizScreenArguments(image?.path),
+                          );
                         } catch (e) {
                           print(e);
                         }

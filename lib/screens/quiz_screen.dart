@@ -15,8 +15,9 @@ class QuizScreen extends StatelessWidget {
         ModalRoute.of(context).settings.arguments as QuizScreenArguments;
     final QuizScreenController c =
         Get.put(QuizScreenController(args.imagePath));
-    final delegate = S.of(context);
 
+    final delegate = S.of(context);
+    c.initModel();
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Stack(
