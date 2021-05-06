@@ -1,10 +1,13 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:plant_classification/screens/questions/questions.dart';
 import 'package:tflite/tflite.dart';
+import 'package:image/image.dart' as img;
 
 class QuizScreenController extends GetxController {
   QuizScreenController(String imagePath) {
@@ -70,17 +73,50 @@ class QuizScreenController extends GetxController {
 
   initModel() async {
     await loadModel();
-    tflite();
+    tflite(imagePath.value);
   }
 
-  Future tflite() async {
-    var recognitions = await Tflite.detectObjectOnImage(
-      path: imagePath.value,
-      threshold: 0.3,
-      imageMean: 0.0,
-      imageStd: 255.0,
+  Future tflite(String imagePath) async {
+    var imageBytes = File(imagePath).readAsBytesSync().buffer;
+    img.Image oriImage = img.decodeJpg(imageBytes.asUint8List());
+    img.Image resizedImage = img.copyResize(oriImage, height: 224, width: 224);
+
+    var recognitions = await Tflite.runModelOnBinary(
+      binary: imageToByteListUint8(resizedImage, 224).buffer.asUint8List(),
+      threshold: 0.03,
     );
     print(recognitions);
+  }
+
+  Uint8List imageToByteListFloat32(
+      img.Image image, int inputSize, double mean, double std) {
+    var convertedBytes = Float32List(1 * inputSize * inputSize * 3);
+    var buffer = Float32List.view(convertedBytes.buffer);
+    int pixelIndex = 0;
+    for (var i = 0; i < inputSize; i++) {
+      for (var j = 0; j < inputSize; j++) {
+        var pixel = image.getPixel(j, i);
+        buffer[pixelIndex++] = (img.getRed(pixel) - mean) / std;
+        buffer[pixelIndex++] = (img.getGreen(pixel) - mean) / std;
+        buffer[pixelIndex++] = (img.getBlue(pixel) - mean) / std;
+      }
+    }
+    return convertedBytes.buffer.asUint8List();
+  }
+
+  Uint8List imageToByteListUint8(img.Image image, int inputSize) {
+    var convertedBytes = Uint8List(1 * inputSize * inputSize * 3);
+    var buffer = Uint8List.view(convertedBytes.buffer);
+    int pixelIndex = 0;
+    for (var i = 0; i < inputSize; i++) {
+      for (var j = 0; j < inputSize; j++) {
+        var pixel = image.getPixel(j, i);
+        buffer[pixelIndex++] = img.getRed(pixel);
+        buffer[pixelIndex++] = img.getGreen(pixel);
+        buffer[pixelIndex++] = img.getBlue(pixel);
+      }
+    }
+    return convertedBytes.buffer.asUint8List();
   }
 
   incrementQuestion() => currentQuestion++;

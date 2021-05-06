@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  image: ^3.0.2
   image_cropper: ^1.4.0
   image_picker: ^0.7.4
   get:
