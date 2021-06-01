@@ -7,7 +7,7 @@ import 'package:plant_classification/widgets/question_button.dart';
 import '../result_screen.dart';
 
 class Question18 extends StatelessWidget {
-  Question18({Key key}) : super(key: key);
+  Question18({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -18,7 +18,7 @@ class Question18 extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: QuestionItem(
           onTap: () {
-            c.appPageController.value.jumpToPage(18);
+            c.appPageController.jumpToPage(18);
           },
           height: size.height / 8,
           width: size.width * 0.95,
@@ -35,7 +35,7 @@ class Question18 extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: QuestionItem(
           onTap: () {
-            c.appPageController.value.jumpToPage(21);
+            c.appPageController.jumpToPage(21);
           },
           height: size.height / 8,
           width: size.width * 0.95,
@@ -53,12 +53,19 @@ class Question18 extends StatelessWidget {
         child: QuestionItem(
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, '/result', (route) => false,
-                arguments: ResultScreenArguments({
+              context,
+              '/result',
+              (route) => false,
+              arguments: ResultScreenArguments(
+                {
                   "PEONIA": "assets/graphics/peonia.PNG",
                   "NINFEA": "assets/graphics/ninfea.PNG",
                   "MELOGRANO": "assets/graphics/melograno.PNG",
-                }, "La pianta appartiene ad una delle seguenti famiglie"));
+                },
+                "La pianta appartiene ad una delle seguenti famiglie",
+                [38, 39, 40],
+              ),
+            );
           },
           height: size.height / 8,
           width: size.width * 0.95,

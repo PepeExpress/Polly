@@ -5,7 +5,7 @@ import 'package:plant_classification/screens/questions/multiple_choice_question.
 import 'package:plant_classification/widgets/question_button.dart';
 
 class Question12 extends StatelessWidget {
-  Question12({Key key}) : super(key: key);
+  Question12({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -16,7 +16,7 @@ class Question12 extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: QuestionItem(
           onTap: () {
-            c.appPageController.value.jumpToPage(12);
+            c.appPageController.jumpToPage(12);
           },
           height: size.height / 8,
           width: size.width * 0.95,
@@ -50,7 +50,7 @@ class Question12 extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: QuestionItem(
           onTap: () {
-            c.appPageController.value.jumpToPage(16);
+            c.appPageController.jumpToPage(16);
           },
           height: size.height / 8,
           width: size.width * 0.95,

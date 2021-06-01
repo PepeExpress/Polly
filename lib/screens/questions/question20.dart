@@ -7,7 +7,7 @@ import 'package:plant_classification/widgets/question_button.dart';
 import '../result_screen.dart';
 
 class Question20 extends StatelessWidget {
-  Question20({Key key}) : super(key: key);
+  Question20({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -19,10 +19,15 @@ class Question20 extends StatelessWidget {
         child: QuestionItem(
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, '/result', (route) => false,
-                arguments: ResultScreenArguments(
-                    {"SENAPE": "assets/graphics/senape.PNG"},
-                    "La pianta appartiene alla famiglia della senape"));
+              context,
+              '/result',
+              (route) => false,
+              arguments: ResultScreenArguments(
+                {"SENAPE": "assets/graphics/senape.PNG"},
+                "La pianta appartiene alla famiglia della senape",
+                [20],
+              ),
+            );
           },
           height: size.height / 8,
           width: size.width * 0.95,
@@ -40,10 +45,15 @@ class Question20 extends StatelessWidget {
         child: QuestionItem(
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, '/result', (route) => false,
-                arguments: ResultScreenArguments(
-                    {"CAPPERO": "assets/graphics/cappero.PNG"},
-                    "La pianta appartiene alla famiglia del cappero"));
+              context,
+              '/result',
+              (route) => false,
+              arguments: ResultScreenArguments(
+                {"CAPPERO": "assets/graphics/cappero.PNG"},
+                "La pianta appartiene alla famiglia del cappero",
+                [21],
+              ),
+            );
           },
           height: size.height / 8,
           width: size.width * 0.95,

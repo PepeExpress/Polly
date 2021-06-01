@@ -6,18 +6,24 @@ import 'package:plant_classification/generated/l10n.dart';
 import 'package:plant_classification/widgets/gradient_background.dart';
 import 'package:get/get.dart';
 
-class QuizScreen extends StatelessWidget {
-  const QuizScreen({Key key}) : super(key: key);
+class QuizScreen extends StatefulWidget {
+  @override
+  _QuizScreenState createState() => _QuizScreenState();
+}
+
+class _QuizScreenState extends State<QuizScreen> {
+  late QuizScreenController c;
+  @override
+  void initState() {
+    super.initState();
+
+    c = Get.find();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final QuizScreenArguments args =
-        ModalRoute.of(context).settings.arguments as QuizScreenArguments;
-    final QuizScreenController c =
-        Get.put(QuizScreenController(args.imagePath));
-
     final delegate = S.of(context);
-    c.initModel();
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Stack(
@@ -37,7 +43,7 @@ class QuizScreen extends StatelessWidget {
                           )),
                       GestureDetector(
                         onTap: () => {
-                          c.appPageController.value.jumpToPage(0),
+                          c.appPageController.jumpToPage(0),
                           c.resetQuiz(),
                         },
                         child: Container(
@@ -56,7 +62,7 @@ class QuizScreen extends StatelessWidget {
                             image: DecorationImage(
                               fit: BoxFit.fill,
                               image: FileImage(
-                                File(args.imagePath),
+                                File(c.croppedImagePath),
                               ),
                             ),
                           ),
@@ -71,7 +77,7 @@ class QuizScreen extends StatelessWidget {
                     onPageChanged: (index) {
                       c.incrementQuestion();
                     },
-                    controller: c.appPageController.value,
+                    controller: c.appPageController,
                     children: c.pages(),
                   ),
                 ),
@@ -85,7 +91,7 @@ class QuizScreen extends StatelessWidget {
 }
 
 class QuizScreenArguments {
-  final String imagePath;
+  final String? imagePath;
 
   QuizScreenArguments(this.imagePath);
 }

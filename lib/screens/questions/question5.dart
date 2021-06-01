@@ -6,7 +6,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import '../result_screen.dart';
 
 class Question5 extends StatelessWidget {
-  Question5({Key key}) : super(key: key);
+  Question5({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -16,12 +16,17 @@ class Question5 extends StatelessWidget {
         question: 'Rompendo il fusto puoi notare abbondante lattice bianco?',
         onYesPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"EUFORBIA": "assets/graphics/euforbie.PNG"},
-                  "La pianta appartiene alla famiglia delle Euphorbiaceae"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {"EUFORBIA": "assets/graphics/euforbie.PNG"},
+              "La pianta appartiene alla famiglia delle Euphorbiaceae",
+              [5],
+            ),
+          )
         },
-        onNoPressed: () => {c.appPageController.value.jumpToPage(5)},
+        onNoPressed: () => {c.appPageController.jumpToPage(5)},
       ),
     );
   }

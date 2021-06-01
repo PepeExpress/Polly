@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 const greenbg1 = const Color(0xFF5CF562);
@@ -13,5 +12,3 @@ const bluebg1 = const Color(0xFF3498DB);
 const bluebg2 = const Color(0x003498DB);
 
 bool isUserAuthenticated = true;
-
-CameraDescription firstCamera = null;

@@ -4,7 +4,7 @@ import 'package:plant_classification/controllers/quiz_screen_controller.dart';
 import 'package:plant_classification/screens/questions/yes_no_question.dart';
 
 class Question19 extends StatelessWidget {
-  Question19({Key key}) : super(key: key);
+  Question19({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -12,8 +12,8 @@ class Question19 extends StatelessWidget {
     return Container(
       child: YesNoQuestion(
         question: 'Ha 4 sepali?',
-        onYesPressed: () => {c.appPageController.value.jumpToPage(19)},
-        onNoPressed: () => {c.appPageController.value.jumpToPage(20)},
+        onYesPressed: () => {c.appPageController.jumpToPage(19)},
+        onNoPressed: () => {c.appPageController.jumpToPage(20)},
       ),
     );
   }

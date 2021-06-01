@@ -6,7 +6,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import 'package:plant_classification/widgets/question_button.dart';
 
 class Question6 extends StatelessWidget {
-  Question6({Key key}) : super(key: key);
+  Question6({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -17,7 +17,7 @@ class Question6 extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: QuestionItem(
           onTap: () {
-            c.appPageController.value.jumpToPage(6);
+            c.appPageController.jumpToPage(6);
           },
           height: size.height / 8,
           width: size.width * 0.95,
@@ -51,7 +51,7 @@ class Question6 extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: QuestionItem(
           onTap: () {
-            c.appPageController.value.jumpToPage(8);
+            c.appPageController.jumpToPage(8);
           },
           height: size.height / 8,
           width: size.width * 0.95,
@@ -85,7 +85,7 @@ class Question6 extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: QuestionItem(
           onTap: () {
-            c.appPageController.value.jumpToPage(9);
+            c.appPageController.jumpToPage(9);
           },
           height: size.height / 8,
           width: size.width * 0.95,
@@ -119,7 +119,7 @@ class Question6 extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: QuestionItem(
           onTap: () {
-            c.appPageController.value.jumpToPage(11);
+            c.appPageController.jumpToPage(11);
           },
           height: size.height / 8,
           width: size.width * 0.95,

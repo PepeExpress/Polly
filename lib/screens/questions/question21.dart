@@ -6,7 +6,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import '../result_screen.dart';
 
 class Question21 extends StatelessWidget {
-  Question21({Key key}) : super(key: key);
+  Question21({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -16,17 +16,27 @@ class Question21 extends StatelessWidget {
         question: "E' rampicante?",
         onYesPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"VITALBE": "assets/graphics/vitalbe.PNG"},
-                  "La pianta appartiene alla famiglia delle vitalbe"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {"VITALBE": "assets/graphics/vitalbe.PNG"},
+              "La pianta appartiene alla famiglia delle vitalbe",
+              [22],
+            ),
+          )
         },
         onNoPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"PAPAVERO": "assets/graphics/papavero.PNG"},
-                  "La pianta appartiene alla famiglia del papavero"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {"PAPAVERO": "assets/graphics/papavero.PNG"},
+              "La pianta appartiene alla famiglia del papavero",
+              [23],
+            ),
+          )
         },
       ),
     );

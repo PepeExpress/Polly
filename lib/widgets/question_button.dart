@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class QuestionItem extends StatelessWidget {
-  final Widget child;
-  final Function onTap;
+  final Widget? child;
+  final Function? onTap;
   final double width;
   final double height;
   final Color backgroundColor;
   const QuestionItem(
-      {Key key,
+      {Key? key,
       this.child,
       this.onTap,
       this.width = 140,
@@ -21,7 +21,7 @@ class QuestionItem extends StatelessWidget {
       borderRadius: BorderRadius.all(
         Radius.circular(20),
       ),
-      onTap: this.onTap,
+      onTap: this.onTap as void Function()?,
       child: Container(
         width: this.width,
         height: this.height,

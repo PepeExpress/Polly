@@ -5,7 +5,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import 'package:plant_classification/screens/result_screen.dart';
 
 class Question2 extends StatelessWidget {
-  Question2({Key key}) : super(key: key);
+  Question2({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -16,12 +16,16 @@ class Question2 extends StatelessWidget {
         question: 'Il fiore è labiato e/o ha lo sperone?',
         onYesPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"ORCHIDEE": "assets/graphics/orchid.PNG"},
-                  "La pianta appartiene alla famiglia delle orchidee"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+                {"ORCHIDEE": "assets/graphics/orchid.PNG"},
+                "La pianta appartiene alla famiglia delle orchidee",
+                [1]),
+          )
         },
-        onNoPressed: () => {c.appPageController.value.jumpToPage(30)},
+        onNoPressed: () => {c.appPageController.jumpToPage(30)},
       ),
     );
   }

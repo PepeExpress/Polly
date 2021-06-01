@@ -6,7 +6,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import '../result_screen.dart';
 
 class Question3 extends StatelessWidget {
-  Question3({Key key}) : super(key: key);
+  Question3({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -19,18 +19,30 @@ class Question3 extends StatelessWidget {
         ),
         onYesPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"IRIS": "assets/graphics/iris.PNG"},
-                  "La pianta appartiene alla famiglia delle Iridaceae"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {"IRIS": "assets/graphics/iris.PNG"},
+              "La pianta appartiene alla famiglia delle Iridaceae",
+              [2],
+            ),
+          )
         },
         onNoPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments({
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {
                 "CIPOLLA": "assets/graphics/cipolla.PNG",
                 "GIGLIO": "assets/graphics/giglio.PNG"
-              }, "La pianta appartiene alla famiglia delle cipolle o dei gigli"))
+              },
+              "La pianta appartiene alla famiglia delle cipolle o dei gigli",
+              [3, 4],
+            ),
+          )
         },
       ),
     );

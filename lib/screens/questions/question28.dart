@@ -6,7 +6,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import '../result_screen.dart';
 
 class Question28 extends StatelessWidget {
-  Question28({Key key}) : super(key: key);
+  Question28({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -17,12 +17,17 @@ class Question28 extends StatelessWidget {
             'I petali sono completamente fusi per tutta la loro lunghezza?',
         onYesPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"CAMPANELLA": "assets/graphics/campanella.PNG"},
-                  "La pianta appartiene alla famiglia delle campanelle"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {"CAMPANELLA": "assets/graphics/campanella.PNG"},
+              "La pianta appartiene alla famiglia delle campanelle",
+              [31],
+            ),
+          )
         },
-        onNoPressed: () => {c.appPageController.value.jumpToPage(28)},
+        onNoPressed: () => {c.appPageController.jumpToPage(28)},
       ),
     );
   }

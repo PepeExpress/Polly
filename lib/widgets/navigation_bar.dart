@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  CustomBottomNavigationBar({Key key, this.currentIndex = 0, this.onChange})
+  CustomBottomNavigationBar({Key? key, this.currentIndex = 0, this.onChange})
       : super(key: key);
   final int currentIndex;
-  final Function(int) onChange;
+  final Function(int)? onChange;
   @override
   _CustomBottomNavigationBarState createState() =>
       _CustomBottomNavigationBarState();
@@ -16,7 +16,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int cIndex = 3;
   void _changeIndex(int index) {
     if (widget.onChange != null) {
-      widget.onChange(index);
+      widget.onChange!(index);
       setState(() {
         cIndex = index;
       });
@@ -203,7 +203,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 }
 
 void navigateTo(BuildContext context, String route) {
-  String currentRoute = ModalRoute.of(context).settings.name;
+  String? currentRoute = ModalRoute.of(context)!.settings.name;
   if (currentRoute == route) {
   } else {
     if (currentRoute == '/quiz') {
@@ -255,9 +255,9 @@ class ClipShadowPath extends StatelessWidget {
   final Widget child;
 
   ClipShadowPath({
-    @required this.shadow,
-    @required this.clipper,
-    @required this.child,
+    required this.shadow,
+    required this.clipper,
+    required this.child,
   });
 
   @override
@@ -276,7 +276,7 @@ class _ClipShadowShadowPainter extends CustomPainter {
   final Shadow shadow;
   final CustomClipper<Path> clipper;
 
-  _ClipShadowShadowPainter({@required this.shadow, @required this.clipper});
+  _ClipShadowShadowPainter({required this.shadow, required this.clipper});
 
   @override
   void paint(Canvas canvas, Size size) {

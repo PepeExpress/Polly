@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:plant_classification/widgets/question_button.dart';
 
 class MultipleChoiceQuestion extends StatelessWidget {
-  final String question;
-  final List<Widget> choices;
-  const MultipleChoiceQuestion({Key key, this.question, this.choices})
+  final String? question;
+  final List<Widget>? choices;
+  const MultipleChoiceQuestion({Key? key, this.question, this.choices})
       : super(key: key);
 
   @override
@@ -14,14 +14,14 @@ class MultipleChoiceQuestion extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          question,
+          question!,
           style: Theme.of(context).textTheme.bodyText1,
           textAlign: TextAlign.center,
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [...this.choices],
+          children: [...this.choices!],
         ),
       ],
     );

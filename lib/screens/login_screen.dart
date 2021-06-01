@@ -3,7 +3,7 @@ import 'package:flutter_login/flutter_login.dart';
 import 'package:plant_classification/widgets/gradient_background.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

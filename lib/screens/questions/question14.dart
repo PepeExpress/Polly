@@ -7,7 +7,7 @@ import 'package:plant_classification/widgets/question_button.dart';
 import '../result_screen.dart';
 
 class Question14 extends StatelessWidget {
-  Question14({Key key}) : super(key: key);
+  Question14({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -19,10 +19,15 @@ class Question14 extends StatelessWidget {
         child: QuestionItem(
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, '/result', (route) => false,
-                arguments: ResultScreenArguments(
-                    {"POLIGALA": "assets/graphics/polygala.PNG"},
-                    "La pianta appartiene alla famiglia della poligala"));
+              context,
+              '/result',
+              (route) => false,
+              arguments: ResultScreenArguments(
+                {"POLIGALA": "assets/graphics/polygala.PNG"},
+                "La pianta appartiene alla famiglia della poligala",
+                [14],
+              ),
+            );
           },
           height: size.height / 8,
           width: size.width * 0.95,
@@ -40,10 +45,15 @@ class Question14 extends StatelessWidget {
         child: QuestionItem(
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, '/result', (route) => false,
-                arguments: ResultScreenArguments(
-                    {"LEGUMI": "assets/graphics/legume1.PNG"},
-                    "La pianta appartiene alla famiglia dei legumi"));
+              context,
+              '/result',
+              (route) => false,
+              arguments: ResultScreenArguments(
+                {"LEGUMI": "assets/graphics/legume1.PNG"},
+                "La pianta appartiene alla famiglia dei legumi",
+                [15],
+              ),
+            );
           },
           height: size.height / 8,
           width: size.width * 0.95,

@@ -3,12 +3,12 @@ import 'package:plant_classification/screens/questions/multiple_choice_question.
 import 'package:plant_classification/widgets/question_button.dart';
 
 class YesNoQuestion extends StatelessWidget {
-  final String question;
-  final Function onYesPressed;
-  final Function onNoPressed;
-  final Widget questionChild;
+  final String? question;
+  final Function? onYesPressed;
+  final Function? onNoPressed;
+  final Widget? questionChild;
   const YesNoQuestion(
-      {Key key,
+      {Key? key,
       this.question,
       this.onYesPressed,
       this.onNoPressed,
@@ -30,12 +30,12 @@ class YesNoQuestion extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  question,
+                  question!,
                   style: Theme.of(context).textTheme.bodyText2,
                   textAlign: TextAlign.center,
                 ),
               ),
-              questionChild == null ? Container() : questionChild,
+              questionChild == null ? Container() : questionChild!,
             ],
           ),
         ),

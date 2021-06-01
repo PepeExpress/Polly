@@ -6,7 +6,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import '../result_screen.dart';
 
 class Question25 extends StatelessWidget {
-  Question25({Key key}) : super(key: key);
+  Question25({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -16,12 +16,17 @@ class Question25 extends StatelessWidget {
         question: 'Ha 3 sepali?',
         onYesPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"CISTO": "assets/graphics/cisto.PNG"},
-                  "La pianta appartiene alla famiglia del cisto"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {"CISTO": "assets/graphics/cisto.PNG"},
+              "La pianta appartiene alla famiglia del cisto",
+              [27],
+            ),
+          )
         },
-        onNoPressed: () => {c.appPageController.value.jumpToPage(25)},
+        onNoPressed: () => {c.appPageController.jumpToPage(25)},
       ),
     );
   }

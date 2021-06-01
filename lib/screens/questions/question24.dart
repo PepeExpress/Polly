@@ -6,7 +6,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import '../result_screen.dart';
 
 class Question24 extends StatelessWidget {
-  Question24({Key key}) : super(key: key);
+  Question24({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -16,17 +16,27 @@ class Question24 extends StatelessWidget {
         question: 'Ha la foglia tripartita (tipo trifoglio)?',
         onYesPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"ACETOSELLE": "assets/graphics/acetoselle.PNG"},
-                  "La pianta appartiene alla famiglia delle acetoselle"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {"ACETOSELLE": "assets/graphics/acetoselle.PNG"},
+              "La pianta appartiene alla famiglia delle acetoselle",
+              [25],
+            ),
+          )
         },
         onNoPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"GAROFANO": "assets/graphics/garofano.PNG"},
-                  "La pianta appartiene alla famiglia dei garofani"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {"GAROFANO": "assets/graphics/garofano.PNG"},
+              "La pianta appartiene alla famiglia dei garofani",
+              [26],
+            ),
+          )
         },
       ),
     );

@@ -1,23 +1,23 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:plant_classification/controllers/quiz_screen_controller.dart';
 import 'package:plant_classification/screens/quiz_screen.dart';
 import 'package:plant_classification/widgets/gradient_background.dart';
 
 class TakePictureScreen extends StatefulWidget {
-  final CameraDescription camera;
-  const TakePictureScreen({Key key, @required this.camera}) : super(key: key);
+  const TakePictureScreen({Key? key}) : super(key: key);
 
   @override
   _TakePictureScreenState createState() => _TakePictureScreenState();
 }
 
 class _TakePictureScreenState extends State<TakePictureScreen> {
-  File _image;
+  File? _image;
   final picker = ImagePicker();
 
   @override
@@ -39,7 +39,7 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
       body: Stack(children: [
         MultipleGradientBG(),
         Center(
-          child: _image == null ? null : Image.file(_image),
+          child: _image == null ? null : Image.file(_image!),
         ),
       ]),
       backgroundColor: Colors.transparent,
@@ -48,24 +48,25 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
+    QuizScreenController c = Get.find();
+    c.originalImage = pickedFile!.path;
     if (pickedFile != null) {
-      File croppedFile = await ImageCropper.cropImage(
+      File? croppedFile = await ImageCropper.cropImage(
           sourcePath: pickedFile.path,
           aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
           maxHeight: 224,
           maxWidth: 224,
           compressFormat: ImageCompressFormat.jpg);
-
       setState(() {
         if (croppedFile != null) {
           _image = File(croppedFile.path);
         } else {
           print("No image selected.");
         }
+        c.croppedImagePath = croppedFile!.path;
         Navigator.pushNamed(
           context,
           '/quiz',
-          arguments: QuizScreenArguments(croppedFile.path),
         );
       });
     }

@@ -6,7 +6,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import '../result_screen.dart';
 
 class Question29 extends StatelessWidget {
-  Question29({Key key}) : super(key: key);
+  Question29({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -16,13 +16,20 @@ class Question29 extends StatelessWidget {
         question: 'I petali sono fusi solo alla base per un brevissimo tratto?',
         onYesPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments({
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {
                 "BORRAGGINE": "assets/graphics/borraggine.PNG",
                 "POMODORO": "assets/graphics/pomodoro.PNG"
-              }, "La pianta appartiene alla famiglia della borraggine o del pomodoro"))
+              },
+              "La pianta appartiene alla famiglia della borraggine o del pomodoro",
+              [32, 33],
+            ),
+          )
         },
-        onNoPressed: () => {c.appPageController.value.jumpToPage(29)},
+        onNoPressed: () => {c.appPageController.jumpToPage(29)},
       ),
     );
   }

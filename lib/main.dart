@@ -1,19 +1,13 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:plant_classification/db/plants_database.dart';
 import 'screens/screens.dart';
-import 'package:plant_classification/utils/globals.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 import 'generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  final cameras = await availableCameras();
-  firstCamera = cameras.first;
-  print(firstCamera);
-
+  await PlantsDatabase.instance.database;
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -51,9 +45,7 @@ class MyApp extends StatelessWidget {
         '/leaderboard': (context) => LeaderboardScreen(),
         '/herbary': (context) => HerbaryScreen(),
         '/home': (context) => HomeScreen(),
-        '/camera': (context) => TakePictureScreen(
-              camera: firstCamera,
-            ),
+        '/camera': (context) => TakePictureScreen(),
         '/quiz': (context) => QuizScreen(),
         '/result': (context) => ResultScreen(),
       },

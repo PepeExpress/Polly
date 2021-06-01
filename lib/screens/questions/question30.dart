@@ -6,7 +6,7 @@ import 'package:plant_classification/screens/questions/yes_no_question.dart';
 import '../result_screen.dart';
 
 class Question30 extends StatelessWidget {
-  Question30({Key key}) : super(key: key);
+  Question30({Key? key}) : super(key: key);
   final QuizScreenController c = Get.find();
 
   @override
@@ -16,18 +16,30 @@ class Question30 extends StatelessWidget {
         question: 'Formano un tubetto stretto (trumpet-like)?',
         onYesPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments({
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {
                 "VINCA": "assets/graphics/vinca.PNG",
                 "PRIMULA": "assets/graphics/primula.PNG"
-              }, "La pianta appartiene alla famiglia della vinca o della primula"))
+              },
+              "La pianta appartiene alla famiglia della vinca o della primula",
+              [34, 35],
+            ),
+          )
         },
         onNoPressed: () => {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/result', (route) => false,
-              arguments: ResultScreenArguments(
-                  {"GENZIANA": "assets/graphics/genziana.PNG"},
-                  "La pianta appartiene alla famiglia della genziana"))
+            context,
+            '/result',
+            (route) => false,
+            arguments: ResultScreenArguments(
+              {"GENZIANA": "assets/graphics/genziana.PNG"},
+              "La pianta appartiene alla famiglia della genziana",
+              [36],
+            ),
+          )
         },
       ),
     );
