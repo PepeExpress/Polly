@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:plant_classification/db/plants_database.dart';
+import 'package:plant_classification/screens/detail_screen.dart';
 import 'screens/screens.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         '/camera': (context) => TakePictureScreen(),
         '/quiz': (context) => QuizScreen(),
         '/result': (context) => ResultScreen(),
+        '/detail': (context) => DetailScreen(),
       },
       localizationsDelegates: [
         S.delegate,

@@ -18,7 +18,7 @@ class PlantFields {
   static final String discovered = 'discovered';
   static final String discoveredTime = 'discoveredTime';
   static final String name = 'name';
-  static final String description = 'description';
+  static final String description = "description";
   static final String urlImage = 'urlImage';
   static final String urlWikipedia = 'urlWikipedia';
   static final String classificationResults = 'classificationResults';
