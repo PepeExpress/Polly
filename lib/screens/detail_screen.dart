@@ -4,7 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_classification/model/plants.dart';
 import 'package:plant_classification/utils/date_formatter.dart';
-import 'package:plant_classification/utils/wikipedia_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,7 +14,6 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final DetailScreenArguments args =
         ModalRoute.of(context)!.settings.arguments as DetailScreenArguments;
-    final WikipediaInfo info = WikipediaInfo(args.plant.urlWikipedia);
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
