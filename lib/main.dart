@@ -26,15 +26,17 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Quicksand',
         textTheme: TextTheme(
           headline1: TextStyle(
-              fontSize: 48, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 48, fontWeight: FontWeight.w600, color: Colors.black),
           headline2: TextStyle(
-              fontSize: 36, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 36, fontWeight: FontWeight.w600, color: Colors.black),
           headline3: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 30, fontWeight: FontWeight.w600, color: Colors.black),
           bodyText1: TextStyle(
-              fontSize: 24, fontWeight: FontWeight.normal, color: Colors.black),
+              fontSize: 24, fontWeight: FontWeight.w600, color: Colors.black),
           bodyText2: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),
+              fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
+          caption: TextStyle(
+              fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
         ),
       ),
       initialRoute: '/',

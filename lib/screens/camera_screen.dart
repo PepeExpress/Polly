@@ -49,8 +49,8 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
     QuizScreenController c = Get.find();
-    c.originalImage = pickedFile!.path;
     if (pickedFile != null) {
+      c.originalImage = pickedFile.path;
       File? croppedFile = await ImageCropper.cropImage(
           sourcePath: pickedFile.path,
           aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
@@ -69,6 +69,8 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
           '/quiz',
         );
       });
+    } else {
+      Navigator.pop(context);
     }
   }
 }

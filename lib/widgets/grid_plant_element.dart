@@ -24,11 +24,14 @@ class GridPlantElement extends StatelessWidget {
       ),
       child: !plant.discovered
           ? Center(
-              child: Text("?",
-                  style: TextStyle(
-                      fontSize: 48,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black.withOpacity(0.75))),
+              child: Text(
+                "?",
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black.withOpacity(0.75),
+                ),
+              ),
             )
           : Center(
               child: GestureDetector(

@@ -148,14 +148,20 @@ class _ResultScreenState extends State<ResultScreen> {
                             style: Theme.of(context).textTheme.bodyText1,
                             textAlign: TextAlign.center,
                           ),
-                          IconButton(
-                            icon: Icon(Icons.arrow_forward),
-                            onPressed: () async {
-                              await _predict(c.croppedImagePath);
-                              await checkIfCorrect(args.plantID);
-                              await updateDB();
-                              appPageController.jumpToPage(1);
-                            },
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                            ),
+                            child: IconButton(
+                              icon: Icon(Icons.arrow_forward),
+                              onPressed: () async {
+                                await _predict(c.croppedImagePath);
+                                await checkIfCorrect(args.plantID);
+                                await updateDB();
+                                appPageController.jumpToPage(1);
+                              },
+                            ),
                           )
                         ],
                       ),
@@ -219,12 +225,18 @@ class _ResultScreenState extends State<ResultScreen> {
                             alignment: Alignment.bottomRight,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: IconButton(
-                                icon: Icon(Icons.arrow_forward),
-                                onPressed: () {
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context, '/root', (route) => false);
-                                },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: IconButton(
+                                  icon: Icon(Icons.arrow_forward),
+                                  onPressed: () {
+                                    Navigator.pushNamedAndRemoveUntil(
+                                        context, '/root', (route) => false);
+                                  },
+                                ),
                               ),
                             ),
                           )
@@ -240,7 +252,10 @@ class _ResultScreenState extends State<ResultScreen> {
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          Lottie.asset('assets/lottie/sad.json', width: 150),
+                          Lottie.asset(
+                            'assets/lottie/sad.json',
+                            width: 150,
+                          ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
@@ -291,14 +306,12 @@ class _ResultScreenState extends State<ResultScreen> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: ListView(
                                     children: c.predictions.map((e) {
-                                      return Flexible(
-                                        child: Text(
-                                          e.toString(),
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
-                                        ),
+                                      return Text(
+                                        e.toString(),
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2,
                                       );
                                     }).toList(),
                                   ),
@@ -310,23 +323,35 @@ class _ResultScreenState extends State<ResultScreen> {
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                IconButton(
-                                  icon: Icon(
-                                    Icons.refresh,
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.white,
                                   ),
-                                  onPressed: () {
-                                    Navigator.pushNamedAndRemoveUntil(
-                                        context, '/camera', (route) => false);
-                                  },
+                                  child: IconButton(
+                                    icon: Icon(
+                                      Icons.refresh,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pushNamedAndRemoveUntil(
+                                          context, '/camera', (route) => false);
+                                    },
+                                  ),
                                 ),
-                                IconButton(
-                                  icon: Icon(Icons.home),
-                                  onPressed: () {
-                                    Navigator.pushNamedAndRemoveUntil(
-                                        context, '/root', (route) => false);
-                                  },
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.white,
+                                  ),
+                                  child: IconButton(
+                                    icon: Icon(Icons.home),
+                                    onPressed: () {
+                                      Navigator.pushNamedAndRemoveUntil(
+                                          context, '/root', (route) => false);
+                                    },
+                                  ),
                                 )
                               ],
                             ),
