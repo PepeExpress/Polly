@@ -1,27 +1,14 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:plant_classification/screens/camera_screen.dart';
-import 'package:plant_classification/screens/herbary_screen.dart';
-import 'package:plant_classification/screens/home_screen.dart';
-import 'package:plant_classification/screens/landing_screen.dart';
-import 'package:plant_classification/screens/leaderboard_screen.dart';
-import 'package:plant_classification/screens/login_screen.dart';
-import 'package:plant_classification/screens/quiz_screen.dart';
-import 'package:plant_classification/screens/root_page.dart';
-import 'package:plant_classification/screens/user_screen.dart';
-import 'package:plant_classification/utils/globals.dart';
+import 'package:plant_classification/db/plants_database.dart';
+import 'package:plant_classification/screens/detail_screen.dart';
+import 'screens/screens.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 import 'generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  final cameras = await availableCameras();
-  firstCamera = cameras.first;
-  print(firstCamera);
-
+  await PlantsDatabase.instance.database;
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -37,18 +24,19 @@ class MyApp extends StatelessWidget {
       title: 'Plant Classification',
       theme: ThemeData(
         fontFamily: 'Quicksand',
-        //accentColor: Colors.transparent,
         textTheme: TextTheme(
           headline1: TextStyle(
-              fontSize: 48, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 48, fontWeight: FontWeight.w600, color: Colors.black),
           headline2: TextStyle(
-              fontSize: 36, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 36, fontWeight: FontWeight.w600, color: Colors.black),
           headline3: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 30, fontWeight: FontWeight.w600, color: Colors.black),
           bodyText1: TextStyle(
-              fontSize: 24, fontWeight: FontWeight.normal, color: Colors.black),
+              fontSize: 24, fontWeight: FontWeight.w600, color: Colors.black),
           bodyText2: TextStyle(
-              fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black),
+              fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
+          caption: TextStyle(
+              fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
         ),
       ),
       initialRoute: '/',
@@ -60,10 +48,10 @@ class MyApp extends StatelessWidget {
         '/leaderboard': (context) => LeaderboardScreen(),
         '/herbary': (context) => HerbaryScreen(),
         '/home': (context) => HomeScreen(),
-        '/camera': (context) => TakePictureScreen(
-              camera: firstCamera,
-            ),
-        '/quiz': (context) => QuizScreen()
+        '/camera': (context) => TakePictureScreen(),
+        '/quiz': (context) => QuizScreen(),
+        '/result': (context) => ResultScreen(),
+        '/detail': (context) => DetailScreen(),
       },
       localizationsDelegates: [
         S.delegate,

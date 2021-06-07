@@ -48,5 +48,10 @@
 	<false/>
 	<key>NSCameraUsageDescription</key> 
 	<string>Explanation on why the camera access is needed.</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>https</string>
+	<string>http</string>
+	</array>
 </dict>
 </plist>

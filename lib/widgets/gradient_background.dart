@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../utils/globals.dart';
 
 class MultipleGradientBG extends StatelessWidget {
-  final Widget child;
-  const MultipleGradientBG({Key key, this.child}) : super(key: key);
+  final Widget? child;
+  const MultipleGradientBG({Key? key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

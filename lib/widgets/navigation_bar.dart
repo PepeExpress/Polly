@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  CustomBottomNavigationBar({Key key, this.currentIndex = 0, this.onChange})
+  CustomBottomNavigationBar({Key? key, this.currentIndex = 0, this.onChange})
       : super(key: key);
   final int currentIndex;
-  final Function(int) onChange;
+  final Function(int)? onChange;
   @override
   _CustomBottomNavigationBarState createState() =>
       _CustomBottomNavigationBarState();
@@ -14,10 +14,14 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int cIndex = 3;
+  var selectedCircleBottomPos = [-20.0, -20.0, -20.0, 5.0];
+
   void _changeIndex(int index) {
     if (widget.onChange != null) {
-      widget.onChange(index);
+      widget.onChange!(index);
       setState(() {
+        selectedCircleBottomPos[cIndex] = -20.0;
+        selectedCircleBottomPos[index] = 5;
         cIndex = index;
       });
     }
@@ -64,16 +68,22 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                   size: 28,
                                 ),
                               ),
-                              Positioned(
-                                bottom: 5,
+                              AnimatedPositioned(
+                                duration: Duration(
+                                  milliseconds: 250,
+                                ),
+                                bottom: selectedCircleBottomPos[0],
                                 left: 24,
                                 child: ClipOval(
-                                  child: Container(
+                                  child: AnimatedContainer(
                                     width: 6,
                                     height: 6,
                                     color: cIndex == 0
                                         ? Colors.black
                                         : Colors.transparent,
+                                    duration: Duration(
+                                      milliseconds: 250,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -94,16 +104,22 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                   size: 28,
                                 ),
                               ),
-                              Positioned(
-                                bottom: 5,
+                              AnimatedPositioned(
+                                duration: Duration(
+                                  milliseconds: 250,
+                                ),
+                                bottom: selectedCircleBottomPos[1],
                                 left: 24,
                                 child: ClipOval(
-                                  child: Container(
+                                  child: AnimatedContainer(
                                     width: 6,
                                     height: 6,
                                     color: cIndex == 1
                                         ? Colors.black
                                         : Colors.transparent,
+                                    duration: Duration(
+                                      milliseconds: 250,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -127,16 +143,22 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                   size: 28,
                                 ),
                               ),
-                              Positioned(
-                                bottom: 5,
+                              AnimatedPositioned(
+                                duration: Duration(
+                                  milliseconds: 250,
+                                ),
+                                bottom: selectedCircleBottomPos[2],
                                 left: 24,
                                 child: ClipOval(
-                                  child: Container(
+                                  child: AnimatedContainer(
                                     width: 6,
                                     height: 6,
                                     color: cIndex == 2
                                         ? Colors.black
                                         : Colors.transparent,
+                                    duration: Duration(
+                                      milliseconds: 250,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -157,16 +179,22 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                   size: 28,
                                 ),
                               ),
-                              Positioned(
-                                bottom: 5,
+                              AnimatedPositioned(
+                                bottom: selectedCircleBottomPos[3],
                                 left: 24,
+                                duration: Duration(
+                                  milliseconds: 250,
+                                ),
                                 child: ClipOval(
-                                  child: Container(
+                                  child: AnimatedContainer(
                                     width: 6,
                                     height: 6,
                                     color: cIndex == 3
                                         ? Colors.black
                                         : Colors.transparent,
+                                    duration: Duration(
+                                      milliseconds: 250,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -186,13 +214,46 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             child: Container(
               width: 64,
               height: 64,
-              child: FloatingActionButton(
-                onPressed: () => {navigateTo(context, '/camera')},
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.add,
-                  color: Colors.black,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 6,
+                      color: Colors.black.withOpacity(0.1),
+                      spreadRadius: 5)
+                ],
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  colors: [
+                    Color(0xFF70F570),
+                    Color(0xFF49C628),
+                  ],
                 ),
+              ),
+              child: Stack(
+                children: [
+                  Center(
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        customBorder: CircleBorder(),
+                        splashColor: Colors.white.withOpacity(0.2),
+                        onTap: () => {
+                          navigateTo(context, '/camera'),
+                        },
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
           ),
@@ -203,7 +264,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 }
 
 void navigateTo(BuildContext context, String route) {
-  String currentRoute = ModalRoute.of(context).settings.name;
+  String? currentRoute = ModalRoute.of(context)!.settings.name;
   if (currentRoute == route) {
   } else {
     if (currentRoute == '/quiz') {
@@ -255,9 +316,9 @@ class ClipShadowPath extends StatelessWidget {
   final Widget child;
 
   ClipShadowPath({
-    @required this.shadow,
-    @required this.clipper,
-    @required this.child,
+    required this.shadow,
+    required this.clipper,
+    required this.child,
   });
 
   @override
@@ -276,7 +337,7 @@ class _ClipShadowShadowPainter extends CustomPainter {
   final Shadow shadow;
   final CustomClipper<Path> clipper;
 
-  _ClipShadowShadowPainter({@required this.shadow, @required this.clipper});
+  _ClipShadowShadowPainter({required this.shadow, required this.clipper});
 
   @override
   void paint(Canvas canvas, Size size) {

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:plant_classification/db/plants_database.dart';
 import '../widgets/gradient_background.dart';
 import 'package:plant_classification/screens/herbary_screen.dart';
 import 'package:plant_classification/screens/home_screen.dart';
@@ -9,7 +10,7 @@ import 'package:plant_classification/screens/user_screen.dart';
 import 'package:plant_classification/widgets/navigation_bar.dart';
 
 class RootPage extends StatefulWidget {
-  const RootPage({Key key}) : super(key: key);
+  const RootPage({Key? key}) : super(key: key);
 
   @override
   _RootPageState createState() => _RootPageState();
@@ -34,6 +35,13 @@ class _RootPageState extends State<RootPage> {
       duration: Duration(milliseconds: 500),
       curve: Curves.ease,
     );
+  }
+
+
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
