@@ -11,4 +11,4 @@ const purplebg2 = const Color(0x00C364E8);
 const bluebg1 = const Color(0xFF3498DB);
 const bluebg2 = const Color(0x003498DB);
 
-bool isUserAuthenticated = true;
+bool isUserAuthenticated = false;

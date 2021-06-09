@@ -21,6 +21,10 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
+  flutter_svg: ^0.22.0
+  cloud_firestore: "^2.2.1"
+  firebase_core: "^1.2.1"
+  firebase_auth: "^1.3.0"
   marquee: ^2.1.0
   percent_indicator: ^3.0.1
   font_awesome_flutter: ^9.0.0
@@ -34,7 +38,7 @@ dependencies:
   image_cropper: ^1.4.0
   image_picker: ^0.7.4
   get: ^4.1.4
-  flutter_login: ^2.0.0-nullsafety.0
+  flutter_login: ^2.0.0
   carousel_slider: ^4.0.0-nullsafety.0
   flutter:
     sdk: flutter
@@ -57,6 +61,7 @@ flutter:
     - assets/graphics/
     - assets/tensorflow/
     - assets/lottie/
+    - assets/badges/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

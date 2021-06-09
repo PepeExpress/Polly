@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plant_classification/controllers/herbary_screen_controller.dart';
+import 'package:plant_classification/db/badges_database.dart';
 import 'package:plant_classification/db/plants_database.dart';
 import 'package:plant_classification/generated/l10n.dart';
 import 'package:plant_classification/utils/globals.dart';
@@ -41,7 +42,10 @@ class _HerbaryScreenState extends State<HerbaryScreen>
       child: Column(
         children: [
           GestureDetector(
-            onDoubleTap: () => PlantsDatabase.instance.deleteDB('plants.db'),
+            onDoubleTap: () => {
+              PlantsDatabase.instance.deleteDB('plants.db'),
+              BadgesDatabase.instance.deleteDB('badges.db')
+            },
             onLongPress: () => controller.discoverPlant(rnd.nextInt(40)),
             child: Text(
               delegate.herbaryScreenTitle,
@@ -68,7 +72,8 @@ class _HerbaryScreenState extends State<HerbaryScreen>
           ),
           GestureDetector(
             onDoubleTap: () => controller.discoverAll(),
-            onLongPress: () => controller.undiscoverAll(),
+            onLongPress: () =>
+                {controller.undiscoverAll(), controller.resetBadges()},
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
