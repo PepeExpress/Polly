@@ -1,14 +1,19 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:plant_classification/controllers/firestore_controller.dart';
 import 'package:plant_classification/controllers/herbary_screen_controller.dart';
 import 'package:plant_classification/generated/l10n.dart';
+import 'package:plant_classification/model/user.dart';
 import 'package:plant_classification/screens/badge_detail_screen.dart';
 import 'package:plant_classification/screens/landing_screen.dart';
 import 'package:plant_classification/utils/auth/authentication_controller.dart';
 import 'package:plant_classification/widgets/hero_badge_route.dart';
 import 'package:plant_classification/widgets/navigation_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_storage/get_storage.dart';
 
 class UserScreen extends StatelessWidget {
   const UserScreen({Key? key}) : super(key: key);
@@ -17,8 +22,13 @@ class UserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     CollectionReference user = FirebaseFirestore.instance.collection('user');
     final delegate = S.of(context);
+    var txt = TextEditingController();
     HerbaryScreenController controller = Get.find();
-    //AuthenticationController ac = Get.find();
+    AuthenticationController ac = Get.find();
+    final storage = GetStorage();
+    var userInfo = ac.modelUser;
+    txt.text = userInfo.value.username;
+
     return SafeArea(
       child: Column(
         children: [
@@ -48,7 +58,7 @@ class UserScreen extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 50,
                       backgroundImage: NetworkImage(
-                          'https://img.fotocommunity.com/fiorellino-di-campo-22e91e66-f1c5-4ce2-a376-0edf84644dfe.jpg?height=1080'),
+                          controller.plants![userInfo.value.imgIndex].urlImage),
                     ),
                   ),
                 ],
@@ -72,9 +82,9 @@ class UserScreen extends StatelessWidget {
                     child: IconButton(
                       icon: Icon(Icons.logout),
                       onPressed: () async {
-                        // await ac.signOut();
-                        // Navigator.pushNamedAndRemoveUntil(
-                        //     context, '/', (route) => false);
+                        await ac.signOut();
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/', (route) => false);
                         print("Logged out");
                       },
                     ),
@@ -83,81 +93,84 @@ class UserScreen extends StatelessWidget {
               ),
             ],
           ),
-          // FutureBuilder<DocumentSnapshot>(
-          //   future: user.doc(ac.modelUser.value.uid).get(),
-          //   builder: (BuildContext context,
-          //       AsyncSnapshot<DocumentSnapshot> snapshot) {
-          //     if (snapshot.hasError) {
-          //       return Text("Something went wrong");
-          //     }
-
-          //     if (snapshot.hasData && !snapshot.data!.exists) {
-          //       return Text("Document does not exist");
-          //     }
-
-          //     if (snapshot.connectionState == ConnectionState.done) {
-          //       Map<String, dynamic> data =
-          //           snapshot.data!.data() as Map<String, dynamic>;
-          //       return Text(
-          //         '@' + data['username'].toString(),
-          //         style: Theme.of(context).textTheme.caption,
-          //       );
-          //     }
-
-          //     return Text("loading");
-          //   },
-          // ),
-          Text(
-            '@username'.toString(),
-            style: Theme.of(context).textTheme.caption,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '@',
+                style: Theme.of(context).textTheme.caption,
+              ),
+              IntrinsicWidth(
+                child: Form(
+                  key: GlobalKey<FormState>(),
+                  autovalidateMode: AutovalidateMode.disabled,
+                  child: TextFormField(
+                    controller: txt,
+                    validator: (value) {
+                      return value!.length < 5 || value.length > 12
+                          ? 'Il nome deve contenere più di 4 caratteri e meno di 12'
+                          : null;
+                    },
+                    decoration: InputDecoration(
+                      labelStyle: Theme.of(context).textTheme.caption,
+                      border: InputBorder.none,
+                    ),
+                    style: Theme.of(context).textTheme.caption,
+                    onFieldSubmitted: (value) {
+                      if (value.length < 5 || value.length > 12) {
+                        txt.text = userInfo.value.username;
+                        Flushbar(
+                          message:
+                              "Il nome deve contenere più di 4 caratteri e meno di 12",
+                          icon: Icon(
+                            Icons.close,
+                            size: 28.0,
+                            color: Colors.white,
+                          ),
+                          duration: const Duration(seconds: 3),
+                          backgroundGradient: LinearGradient(
+                            colors: [Colors.red[600]!, Colors.red[400]!],
+                          ),
+                          onTap: (flushbar) => flushbar.dismiss(),
+                        )..show(context);
+                      } else {
+                        txt.text = value;
+                        storage.write('username', value);
+                        ac.modelUser(ModelUser(
+                            username: value,
+                            uid: ac.modelUser.value.uid,
+                            imgIndex: ac.modelUser.value.imgIndex,
+                            points: ac.modelUser.value.points));
+                        Flushbar(
+                          message: "Username aggiornato!",
+                          icon: Icon(
+                            Icons.check,
+                            size: 28.0,
+                            color: Colors.white,
+                          ),
+                          duration: const Duration(seconds: 3),
+                          backgroundGradient: LinearGradient(
+                            colors: [Colors.green[600]!, Colors.green[400]!],
+                          ),
+                          onTap: (flushbar) => flushbar.dismiss(),
+                        )..show(context);
+                      }
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
           SizedBox(
             height: 50,
           ),
           Text(
-            'Classifica',
+            'Punti',
             style: Theme.of(context).textTheme.headline3,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    'Oggi',
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  Text(
-                    '1°',
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(
-                    'Settimana',
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  Text(
-                    '3°',
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(
-                    'Anno',
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  Text(
-                    '234°',
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ],
-              ),
-            ],
+          Text(
+            storage.read('points').toString(),
+            style: Theme.of(context).textTheme.bodyText1,
           ),
           SizedBox(
             height: 50,
@@ -210,29 +223,6 @@ class UserScreen extends StatelessWidget {
                                 ),
                               ))
                           .toList(),
-
-                      // [
-                      // Padding(
-                      //   padding: const EdgeInsets.all(5.0),
-                      //   child: Container(
-                      //     decoration: BoxDecoration(
-                      //       color: Colors.white,
-                      //       shape: BoxShape.circle,
-                      //       boxShadow: [
-                      //         BoxShadow(
-                      //             blurRadius: 6,
-                      //             color: Colors.black.withOpacity(0.1),
-                      //             spreadRadius: 5)
-                      //       ],
-                      //     ),
-                      //     child: CircleAvatar(
-                      //       radius: 50,
-                      //       backgroundImage: NetworkImage(
-                      //           'https://img.fotocommunity.com/fiorellino-di-campo-22e91e66-f1c5-4ce2-a376-0edf84644dfe.jpg?height=1080'),
-                      //     ),
-                      //   ),
-                      // ),
-                      // ],
                     ),
                   );
                 })

@@ -5,11 +5,13 @@ class LeaderBoardEntry extends StatelessWidget {
       {Key? key,
       required this.index,
       required this.username,
-      required this.points})
+      required this.points,
+      required this.imgPath})
       : super(key: key);
   final int index;
   final String username;
   final int points;
+  final String imgPath;
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +53,7 @@ class LeaderBoardEntry extends StatelessWidget {
                     ),
                     child: CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage(
-                          'https://img.fotocommunity.com/fiorellino-di-campo-22e91e66-f1c5-4ce2-a376-0edf84644dfe.jpg?height=1080'),
+                      backgroundImage: NetworkImage(imgPath),
                     ),
                   ),
                   Text(

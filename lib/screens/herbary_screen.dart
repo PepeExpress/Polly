@@ -43,10 +43,10 @@ class _HerbaryScreenState extends State<HerbaryScreen>
         children: [
           GestureDetector(
             onDoubleTap: () => {
-              PlantsDatabase.instance.deleteDB('plants.db'),
-              BadgesDatabase.instance.deleteDB('badges.db')
+              //PlantsDatabase.instance.deleteDB('plants.db'),
+              //BadgesDatabase.instance.deleteDB('badges.db')
             },
-            onLongPress: () => controller.discoverPlant(rnd.nextInt(40)),
+            //onLongPress: () => controller.discoverPlant(rnd.nextInt(40)),
             child: Text(
               delegate.herbaryScreenTitle,
               style: Theme.of(context).textTheme.headline1,
@@ -71,9 +71,9 @@ class _HerbaryScreenState extends State<HerbaryScreen>
                 )),
           ),
           GestureDetector(
-            onDoubleTap: () => controller.discoverAll(),
-            onLongPress: () =>
-                {controller.undiscoverAll(), controller.resetBadges()},
+            //onDoubleTap: () => controller.discoverAll(),
+            // onLongPress: () =>
+            // {controller.undiscoverAll(), controller.resetBadges()},
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(

@@ -1,11 +1,15 @@
 import 'dart:math';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:plant_classification/controllers/firestore_controller.dart';
 import 'package:plant_classification/db/badges_database.dart';
 import 'package:plant_classification/db/plants_database.dart';
 import 'package:plant_classification/model/badges.dart';
 import 'package:plant_classification/model/plants.dart';
 import 'package:plant_classification/model/quotes.dart';
+import 'package:plant_classification/model/user.dart';
+import 'package:plant_classification/utils/auth/authentication_controller.dart';
 
 class HerbaryScreenController extends GetxController {
   HerbaryScreenController(
@@ -20,6 +24,9 @@ class HerbaryScreenController extends GetxController {
   RxList<Plant>? plants;
   RxList<Badge>? badges;
   RxDouble percentageFound = 0.0.obs;
+  final storage = GetStorage();
+  FirestoreDB fire = Get.find();
+  AuthenticationController ac = Get.find();
 
   Future discoverPlant(int id) async {
     if (id >= 0) {
@@ -31,6 +38,9 @@ class HerbaryScreenController extends GetxController {
         );
         PlantsDatabase.instance.update(updatedPlant);
         plants![id] = updatedPlant;
+        awardPoints(50);
+      } else {
+        awardPoints(10);
       }
     }
     this.percentageFound.value = calculatePercentageFound();
@@ -47,6 +57,16 @@ class HerbaryScreenController extends GetxController {
       }
     }
     this.percentageFound.value = calculatePercentageFound();
+  }
+
+  void awardPoints(int points) {
+    storage.write('points', storage.read('points') + points);
+    ac.modelUser(ModelUser(
+        username: ac.modelUser.value.username,
+        imgIndex: ac.modelUser.value.imgIndex,
+        uid: ac.modelUser.value.uid,
+        points: storage.read('points')));
+    fire.updatePoints(ac.modelUser.value);
   }
 
   Future discoverAll() async {

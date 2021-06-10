@@ -35,6 +35,7 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: Container(
+                height: 400,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -46,12 +47,14 @@ class HomeScreen extends StatelessWidget {
                       )
                     ],
                     borderRadius: BorderRadius.circular(25)),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    hc.getRandomQuote(),
-                    style: Theme.of(context).textTheme.bodyText1,
-                    textAlign: TextAlign.center,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      hc.getRandomQuote(),
+                      style: Theme.of(context).textTheme.bodyText1,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),

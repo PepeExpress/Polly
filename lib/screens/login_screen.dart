@@ -22,8 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     Future<String> _signUpUser(LoginData data) async {
-      return await ac.signUp(
-          username: data.name, email: data.name, password: data.password);
+      return await ac.signUp(email: data.name, password: data.password);
     }
 
     return MultipleGradientBG(

@@ -1,8 +1,11 @@
-import 'dart:convert';
-
+import 'package:another_flushbar/flushbar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:plant_classification/model/plants.dart';
+import 'package:plant_classification/model/user.dart';
+import 'package:plant_classification/utils/auth/authentication_controller.dart';
 import 'package:plant_classification/utils/date_formatter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,8 +15,10 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final storage = GetStorage();
     final DetailScreenArguments args =
         ModalRoute.of(context)!.settings.arguments as DetailScreenArguments;
+    final AuthenticationController ac = Get.find();
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -22,6 +27,34 @@ class DetailScreen extends StatelessWidget {
             expandedHeight: 250,
             pinned: true,
             floating: true,
+            actions: [
+              IconButton(
+                icon: Icon(Icons.person_add),
+                onPressed: () {
+                  if (storage.read('usrImage') != null) {
+                    storage.write('usrImage', args.plant.id! - 1);
+                    ac.modelUser(ModelUser(
+                        username: ac.modelUser.value.username,
+                        uid: ac.modelUser.value.uid,
+                        imgIndex: args.plant.id! - 1,
+                        points: ac.modelUser.value.points));
+                    Flushbar(
+                      message: "Immagine del profilo cambiata con successo!",
+                      icon: Icon(
+                        Icons.check,
+                        size: 28.0,
+                        color: Colors.white,
+                      ),
+                      duration: const Duration(seconds: 3),
+                      backgroundGradient: LinearGradient(
+                        colors: [Colors.green[600]!, Colors.green[400]!],
+                      ),
+                      onTap: (flushbar) => flushbar.dismiss(),
+                    )..show(context);
+                  }
+                },
+              )
+            ],
             backgroundColor: Colors.transparent,
             flexibleSpace: CachedNetworkImage(
               color: Colors.transparent,
