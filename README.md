@@ -1,3 +1,3 @@
-# Flutter-plant-classification
+# Polly
 
-A Flutter project for a plant classification app.
+Polly is a Flutter project for a plant classification app.
